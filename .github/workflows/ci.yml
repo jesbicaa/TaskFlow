@@ -20,8 +20,9 @@ jobs:
     - name: Análise de Qualidade de Código (Linter Flake8)
       run: |
         # Para a execução se houver erros de sintaxe ou violações estruturais graves
-        flake8 src/app.py --count --max-line-length=120 --statistics
+        flake8 src/app.py --count --max-line-length=120 --statistics --exit-zerocs
 
     - name: Execução da Suíte de Testes Automatizados (Pytest)
       run: |
         pytest tests/
+        
