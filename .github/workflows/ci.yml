@@ -1,0 +1,19 @@
+name: Integração Contínua TaskFlow
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Configurar Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    - name: Instalar Dependências
+      run: pip install -r requirements.txt
+    - name: Validar Qualidade (Flake8)
+      run: flake8 src/app.py --max-line-length=120
+    - name: Rodar Testes (Pytest)
+      run: pytest tests/
