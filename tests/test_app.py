@@ -1,18 +1,24 @@
 import pytest
-import sys
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
-from app import app, tarefas
+from app import app, repo
 
 @pytest.fixture
 def client():
     app.config['TESTING'] = True
-    tarefas.clear()
+    repo.tarefas.clear()
+    repo.contador_id = 1
     with app.test_client() as client:
         yield client
 
-def test_criar_tarefa(client):
-    resposta = client.post('/criar', data={'titulo': 'Aprender Git', 'descricao': 'Estudar branches'})
+def test_fluxo_registro_tarefa(client):
+    """Garante que a rota de criação responde com redirecionamento e adiciona o objeto no repositório."""
+    resposta = client.post('/criar', data={
+        'titulo': 'Carregamento Docas 3',
+        'descricao': 'Separação de paletes para rota Sul',
+        'prioridade': 'Alta'
+    })
     assert resposta.status_code == 302
-    assert len(tarefas) == 1
-    assert tarefas[0]['titulo'] == 'Aprender Git'
+    lista = repo.listar()
+    assert len(lista) == 1
+    assert lista[0].titulo == 'Carregamento Docas 3'
+    assert lista[0].prioridade == 'Alta'
+    assert lista[0].status == 'To Do'
