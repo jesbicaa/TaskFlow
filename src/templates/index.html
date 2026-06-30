@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TaskFlow Kanban</title>
+        <style>
+            body { font-family: Arial; padding: 20px; background: #f4f4f4; }
+            table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; }
+            th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+            th { background-color: #333; color: white; }
+            .btn { padding: 5px; text-decoration: none; border-radius: 3px; color: white; }
+            .btn-add { background: #28a745; } .btn-move { background: #007bff; } .btn-del { background: #dc3545; }
+        </style>
+    </head>
+    <body>
+        <h1>Painel TaskFlow</h1>
+        <form action="/criar" method="POST">
+            <input type="text" name="titulo" placeholder="Título" required>
+            <input type="text" name="descricao" placeholder="Descrição" required>
+            <button type="submit" class="btn btn-add">Criar Tarefa</button>
+        </form>
+        <table>
+            <tr><th>ID</th><th>Título</th><th>Descrição</th><th>Status</th><th>Ações</th></tr>
+            {% for t in tarefas %}
+            <tr>
+                <td>{{ t.id }}</td><td>{{ t.titulo }}</td><td>{{ t.descricao }}</td><td><b>{{ t.status }}</b></td>
+                <td>
+                    <a href="/atualizar/{{ t.id }}/In Progress" class="btn btn-move">In Progress</a>
+                    <a href="/atualizar/{{ t.id }}/Done" class="btn btn-move">Done</a>
+                    <a href="/deletar/{{ t.id }}" class="btn btn-del">Excluir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
