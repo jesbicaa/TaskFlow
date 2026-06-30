@@ -34,14 +34,27 @@ TaskFlow/
 
 ---
 
-## 📊 3. Planejamento Ágil e Quadro Kanban
+## 📊 3. Planejamento Ágil e Quadro Kanban (GitHub Projects)
 
-O ciclo de vida do desenvolvimento do projeto foi gerenciado visualmente através da ferramenta **GitHub Projects**, utilizando o framework **Kanban** dividido nas colunas fundamentais: `To Do` (A Fazer), `In Progress` (Em Progresso) e `Done` (Concluído).
+O ciclo de vida do desenvolvimento do projeto foi gerenciado visualmente através da ferramenta **GitHub Projects**, utilizando o framework **Kanban** estruturado em três colunas fundamentais: `To Do` (A Fazer), `In Progress` (Em Progresso) e `Done` (Concluído). 
 
-O quadro conta com **10+ cards organizados**, mapeando os requisitos de software, correções, testes e a evolução de escopo proposta.
+Para cumprir as exigências de Engenharia de Software, o fluxo mapeou **11 cards organizados**, distribuídos conforme o progresso real das sprints:
+
+| Coluna | ID | Card / Tarefa de Desenvolvimento | Escopo / Objetivo Técnico |
+| :--- | :---: | :--- | :--- |
+| 🔴 **To Do** | #01 | Planejar roteiro do vídeo pitch de 4min | Organização da apresentação dos critérios do edital. |
+| | #02 | Elaborar relatório técnico em PDF (docs/) | Documentação final da arquitetura para submissão. |
+| 🟡 **In Progress** | #03 | Adicionar capturas de tela do pipeline de CI | Coleta de evidências da bolinha verde do Actions para o relatório. |
+|🟢 **Done** | #04 | Estruturar diretórios padrão do projeto | Criação das pastas obrigatórias `/src`, `/tests` e `/docs`. |
+| | #05 | Mapear dependências (`requirements.txt`) | Configuração inicial do Flask, Pytest e Flake8. |
+| | #06 | Implementar classes de Domínio e Repositório | Criação da arquitetura base (Entidade `Task` e `TarefaRepository`). |
+| | #07 | Desenvolver endpoints e rotas Flask (`app.py`) | Construção das regras de backend para criar, listar e deletar tarefas. |
+| | #08 | Construir interface visual Kanban (`index.html`) | Desenvolvimento do painel web para interação do usuário com Jinja2. |
+| | #09 | Configurar pipeline automatizado de CI | Escrita do arquivo `.github/workflows/ci.yml` no GitHub Actions. |
+| | #10 | Criar suíte de testes unitários (`test_app.py`) | Implementação das validações automatizadas com Pytest. |
+| 🆕 **Done** | #11 | **[Mudança de Escopo]** Implementar prioridades | Card adicional para tratar a inclusão das propriedades de criticidade. |
 
 ---
-
 ## 🛠️ 4. Tecnologias Utilizadas e Como Executar
 
 ### Tecnologias e Dependências
