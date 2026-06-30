@@ -131,7 +131,3 @@ O repositório adota a convenção de **Commits Semânticos** para manter o hist
 | `feat:` | expandir escopo injetando metadados de prioridades alta media e baixa | **Mudança de Escopo** |
 
 ---
-
-```
-
-```
