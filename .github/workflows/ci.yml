@@ -1,19 +1,27 @@
-name: Integração Contínua TaskFlow
+name: CI Quality Assurance
 
 on: [push, pull_request]
 
 jobs:
-  build:
+  pipeline:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Configurar Python
+
+    - name: Configurar Ambiente Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.10'
-    - name: Instalar Dependências
-      run: pip install -r requirements.txt
-    - name: Validar Qualidade (Flake8)
-      run: flake8 src/app.py --max-line-length=120
-    - name: Rodar Testes (Pytest)
-      run: pytest tests/
+
+    - name: Instalar Dependências do Sistema
+      run: |
+        pip install Flask pytest flake8
+
+    - name: Análise de Qualidade de Código (Linter Flake8)
+      run: |
+        # Para a execução se houver erros de sintaxe ou violações estruturais graves
+        flake8 src/app.py --count --max-line-length=120 --statistics
+
+    - name: Execução da Suíte de Testes Automatizados (Pytest)
+      run: |
+        pytest tests/
